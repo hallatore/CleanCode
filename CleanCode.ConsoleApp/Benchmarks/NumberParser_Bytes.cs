@@ -13,16 +13,10 @@ namespace CleanCode.ConsoleApp.Benchmarks
             var length = bytes.Length;
             var result = new Dictionary<int, int>();
             var index = 0;
+            var newIndex = SeekSemiColon(ref bytes, index, length);
 
-            while (true)
+            while (newIndex > 0)
             {
-                var newIndex = SeekSemiColon(ref bytes, index, length);
-
-                if (newIndex < 0)
-                {
-                    break;
-                }
-
                 var number = ConvertToInt(ref bytes, index, newIndex - index, length);
 
                 if (result.ContainsKey(number))
@@ -35,6 +29,7 @@ namespace CleanCode.ConsoleApp.Benchmarks
                 }
 
                 index = newIndex + 1;
+                newIndex = SeekSemiColon(ref bytes, index, length);
             }
 
             return result;
