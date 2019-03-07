@@ -56,5 +56,11 @@ namespace CleanCode.ConsoleApp
         {
             var numbers = NumberParser_Linq.Parse(_content);
         }
+
+        [Benchmark]
+        public void Bytes()
+        {
+            var numbers = NumberParser_Bytes.Parse(_content);
+        }
     }
 }
