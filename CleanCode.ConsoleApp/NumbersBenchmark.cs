@@ -62,5 +62,11 @@ namespace CleanCode.ConsoleApp
         {
             var numbers = NumberParser_Bytes.Parse(_content);
         }
+
+        [Benchmark]
+        public void Span()
+        {
+            var numbers = NumberParser_Span.Parse(_content);
+        }
     }
 }

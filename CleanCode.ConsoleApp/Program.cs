@@ -10,21 +10,7 @@ namespace CleanCode.ConsoleApp
         static void Main(string[] args)
         {
             //ValidateAll();
-            //LocalTest();
             var summary = BenchmarkRunner.Run<NumbersBenchmark>();
-        }
-
-        private static void LocalTest()
-        {
-            var content = NumbersBenchmark.GenerateContentString();
-            var top10 = NumberParser_Linq.Parse(content);
-
-            foreach (var number in top10)
-            {
-                Console.WriteLine($"{number.Key}:\t{number.Value}");
-            }
-
-            Console.ReadKey();
         }
 
         private static void ValidateAll()
@@ -35,11 +21,13 @@ namespace CleanCode.ConsoleApp
             var split = NumberParser_Split.Parse(content);
             var linq = NumberParser_Linq.Parse(content);
             var bytes = NumberParser_Bytes.Parse(content);
+            var span = NumberParser_Span.Parse(content);
 
             ValidateNumbers(regex, indexOf, nameof(indexOf));
             ValidateNumbers(indexOf, split, nameof(split));
             ValidateNumbers(split, linq, nameof(linq));
             ValidateNumbers(linq, bytes, nameof(bytes));
+            ValidateNumbers(bytes, span, nameof(bytes));
 
             Console.WriteLine("Validation complete");
             Console.ReadKey();
