@@ -9,16 +9,10 @@ namespace CleanCode.ConsoleApp.Benchmarks
         {
             var result = new Dictionary<int, int>();
             var index = 0;
+            var newIndex = input.IndexOf(";", index, StringComparison.Ordinal);
 
-            while (true)
+            while (newIndex > 0)
             {
-                var newIndex = input.IndexOf(";", index, StringComparison.Ordinal);
-
-                if (newIndex < 0)
-                {
-                    break;
-                }
-
                 var number = Convert.ToInt32(input.Substring(index, newIndex - index));
 
                 if (result.ContainsKey(number))
@@ -31,6 +25,7 @@ namespace CleanCode.ConsoleApp.Benchmarks
                 }
 
                 index = newIndex + 1;
+                newIndex = input.IndexOf(";", index, StringComparison.Ordinal);
             }
 
             return result; 

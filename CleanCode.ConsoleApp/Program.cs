@@ -37,9 +37,9 @@ namespace CleanCode.ConsoleApp
             var bytes = NumberParser_Bytes.Parse(content);
 
             ValidateNumbers(regex, indexOf, nameof(indexOf));
-            ValidateNumbers(regex, split, nameof(split));
-            ValidateNumbers(regex, linq, nameof(linq));
-            ValidateNumbers(regex, bytes, nameof(bytes));
+            ValidateNumbers(indexOf, split, nameof(split));
+            ValidateNumbers(split, linq, nameof(linq));
+            ValidateNumbers(linq, bytes, nameof(bytes));
 
             Console.WriteLine("Validation complete");
             Console.ReadKey();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -17,7 +16,7 @@ namespace CleanCode.ConsoleApp.Benchmarks
 
             while (newIndex > 0)
             {
-                var number = ConvertToInt(ref bytes, index, newIndex - index, length);
+                var number = ConvertToInt(ref bytes, index, newIndex - index);
 
                 if (result.ContainsKey(number))
                 {
@@ -50,12 +49,9 @@ namespace CleanCode.ConsoleApp.Benchmarks
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int ConvertToInt(ref byte[] bytes, int start, int length, int end)
+        private static int ConvertToInt(ref byte[] bytes, int start, int length)
         {
             var result = 0;
-
-            if (end < start + length)
-                return result;
 
             for (var i = 0; i < length; i++)
             {
