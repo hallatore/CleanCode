@@ -68,5 +68,11 @@ namespace CleanCode.ConsoleApp
         {
             var numbers = NumberParser_Span.Parse(_content);
         }
+
+        [Benchmark]
+        public void PrettySpan()
+        {
+            var numbers = NumberParser_PrettySpan.Parse(_content);
+        }
     }
 }

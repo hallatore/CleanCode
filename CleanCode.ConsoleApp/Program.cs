@@ -9,7 +9,7 @@ namespace CleanCode.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //ValidateAll();
+            ValidateAll();
             var summary = BenchmarkRunner.Run<NumbersBenchmark>();
         }
 
@@ -22,12 +22,15 @@ namespace CleanCode.ConsoleApp
             var linq = NumberParser_Linq.Parse(content);
             var bytes = NumberParser_Bytes.Parse(content);
             var span = NumberParser_Span.Parse(content);
+            var prettySpan = NumberParser_PrettySpan.Parse(content);
 
             ValidateNumbers(regex, indexOf, nameof(indexOf));
             ValidateNumbers(indexOf, split, nameof(split));
             ValidateNumbers(split, linq, nameof(linq));
             ValidateNumbers(linq, bytes, nameof(bytes));
-            ValidateNumbers(bytes, span, nameof(bytes));
+            ValidateNumbers(bytes, span, nameof(span));
+            ValidateNumbers(span, prettySpan, nameof(prettySpan));
+            ValidateNumbers(prettySpan, regex, nameof(regex));
 
             Console.WriteLine("Validation complete");
             Console.ReadKey();
